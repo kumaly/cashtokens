@@ -37,6 +37,10 @@
 - [Registry.cash](https://www.registry.cash/)
 - [Otr.cash](https://otr.cash/)
 
+### Marketplaces
+
+- [TapSwap](https://tapswap.cash/)
+
 ### Librairies
 
 - [Mainnet.cash](https://mainnet.cash/)
