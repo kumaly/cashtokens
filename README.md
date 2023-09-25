@@ -33,7 +33,8 @@
 
 ### Meta Datas (BCMR)
 
-[How BCMR works](https://github.com/bitjson/chip-bcmr)
+- [How BCMR works](https://github.com/bitjson/chip-bcmr)
+- [BCMR Generator](https://bcmr-generator.netlify.app/)
 
 #### Registries
 
