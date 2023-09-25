@@ -1,5 +1,7 @@
 # CashTokens (CT) on Bitcoin Cash (BCH)
 
+- [Specification Technique](https://cashtokens.org/)
+
 ## Migrating from EVM
 
 - Read our [migration week per week](./blog.md)
@@ -19,6 +21,7 @@
 - Mainnet
 
   - [SalemKode](https://explorer.salemkode.com/token/f54ce0297a4017cc922aacde5f7abe7a8397a1058b879f5eb9e2a643d4ec2301)
+  - [3XPL](https://3xpl.com/bitcoin-cash/address/qq4kw0pwx6upd4czkzpl3jp8vnhw35x7msjtnaszds)
 
 - Chipnet
   - [Ninja](https://chipnet.bch.ninja/)
@@ -52,3 +55,4 @@
 ## Actives Projects
 
 - [BCH Guru](https://bch.guru/)
+- [Bitcats Heroes](https://bitcatsheroes.club/)
