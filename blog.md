@@ -39,3 +39,44 @@ Here are a few key takeaways from what we've learned:
 - NFTs can have an associated FT; for instance, an NFT can represent a container like a popcorn box or a car, and the FTs can represent the items inside like popcorn or fuel, which can be transferred with or without the associated NFT.
 - Unlike ERC-721, NFTs don't have an incremental ID. Instead, each has a unique ID termed "commitment," which can be any encoded hex value storing up to 40 characters. Although 2 NFTs in CashTokens can share an ID—offering a feature for creating SFTs—it’s the minter's responsibility to maintain uniqueness.
 - To establish a new token category, one needs to consume a UTXO at vout=0, which, albeit somewhat inconvenient, has been automated in our bch library, eliminating the need for manual management.
+
+# Week 2 - 25 Sept 2023 - Collectopia Integration Update
+
+### Overview
+
+This week has primarily focused on transitioning our application, Collectopia, from EOS EVM to BCH utilizing Cash Tokens. Collectopia is a Panini style game featuring 20 collections with a total of 1462 different assets.
+
+### Application Status
+
+The current status of the application with Cash Tokens (CT) integration can be viewed on [Youtube](https://www.youtube.com/watch?v=0VgP1Ujbl-c) [5 min]. Feel free to join our Telegram channel to access the live version and try it out!
+
+Our [Telegram](https://t.me/kumalycom)
+and
+[Discord](https://discord.gg/ceXWjBQtZe)
+channels.
+
+### Integration Details
+
+Previously, we used a single smart contract with our custom SFT protocol on EVM, which was effort-intensive to create but smoother than ERC721 for multiple asset manipulations. With Cash Tokens, we're opting for a single tokenID and the asset internal ID as commitment. Integration tests with CT are performing well, enabling the creation and transfer of over 1000 assets in a single transaction, significantly overcoming the limitations we had with EVM.
+
+### Development of Booster System for Collectopia
+
+We introduced a straightforward Boosters system where users can purchase and open SFT boosters for each collection or a pack containing random assets from all collections. This system is wallet-compatible and operates without the need for custom protocols or use of OP_RETURN, making it universally accessible.
+
+In a former project employing EVM, we implemented a lootboxes system incorporated directly into a smart contract. While functional, it was expensive and lacked flexibility regarding modifications to drop rates post-deployment, with constraints limiting users to 9 lootboxes concurrently due to EVM’s inherent restrictions. Conversely, our integration with CT has enhanced system efficiency, transferring drop rolls to the backend script, enabling the acquisition/opening of up to 99 boosters devoid of blockchain restrictions. This modification not only facilitates smoother transactions but also ensures transparency and accuracy in the computation and validation of actual drop rates against those declared by Collectopia.
+
+### Limitations and Challenges
+
+Currently, we are experiencing a limitation related to the inability to consume boosters and mint assets in one transaction due to constraints from mainnet.cash, not CT, potentially resolvable in future updates. Collectopia has been deployed on chipnet, revealing smooth transactions with the Cashonize wallet, albeit without integration with BCRM, affecting metadata for our assets in other wallets, a situation slated for resolution next week.
+
+CT deployment on testnet has exposed latency issues, with booster acquisitions taking 6 to 8 seconds compared to 3 seconds on EOS EVM testnet. Optimizations are underway to mitigate this delay. Additionally, CT has presented challenges in data readability compared to EVM, as it lacks the ability to listen to contract events logs or query a global state, with available solutions posing scalability concerns. However, the new "scantxoutset" RPC endpoint on the BCH node has addressed some of these concerns, enabling collection of all utxos for a given token category efficiently, albeit with some limitations related to transactions inside the mempool.
+
+### Conclusion and Invitation
+
+After two productive weeks working with CT, we find it to be a robust and efficient technology for our application's needs. We warmly invite users to join our Telegram and participate in testing our current integration on testnet.
+
+[Youtube Video](https://www.youtube.com/watch?v=0VgP1Ujbl-c) of our weekly progress
+
+Join [Telegram](https://t.me/kumalycom) NOW!
+
+Join [Discord](https://discord.gg/ceXWjBQtZe) NOW!
