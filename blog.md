@@ -48,7 +48,7 @@ This week has primarily focused on transitioning our application, Collectopia, f
 
 ### Application Status
 
-The current status of the application with Cash Tokens (CT) integration can be viewed on [Youtube](https://www.youtube.com/watch?v=0VgP1Ujbl-c) [5 min]. Feel free to join our Telegram channel to access the live version and try it out!
+The current status of the application with Cash Tokens (CT) integration can be viewed on [Youtube](https://www.youtube.com/watch?v=xvs61g_uZAQ&feature=youtu.be) [5 min]. Feel free to join our Telegram channel to access the live version and try it out!
 
 Our [Telegram](https://t.me/kumalycom)
 and
@@ -75,7 +75,7 @@ CT deployment on testnet has exposed latency issues, with booster acquisitions t
 
 After two productive weeks working with CT, we find it to be a robust and efficient technology for our application's needs. We warmly invite users to join our Telegram and participate in testing our current integration on testnet.
 
-[Youtube Video](https://www.youtube.com/watch?v=0VgP1Ujbl-c) of our weekly progress
+[Youtube Video](https://www.youtube.com/watch?v=xvs61g_uZAQ&feature=youtu.be) of our weekly progress
 
 Join [Telegram](https://t.me/kumalycom) NOW!
 
