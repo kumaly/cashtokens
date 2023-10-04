@@ -63,6 +63,10 @@ Reasoning:
 - alice1 and alice8 if there are multiple "alice" where 1 and 8 are the first digit of their tokenIDs
 - Unless the user is in contact with multiple "alice" identities, the wallet will present the one he chooses as "alice" and not "alice1" or "alice8".
 
+#### Communicating an identity verbaly
+
+[Thinking process over there](./protpoal_01-verbaly.md)
+
 ## Identities Weight
 
 - Each identity can vote for other identities by using a dedicated slot in its BCMR data
@@ -136,3 +140,36 @@ perso.alice.kumaly.com
 work.alice.kumaly.com
 
 Those sub-accounts can only be manipulated by the tokenID pointed to by "alice".
+
+## Identity for Newcomers
+
+While crypto-holding users can easily create an identity, the need to create an NFT makes it challenging for newcomers until they acquire some BCH.
+
+#### Sponsored by Wallet
+
+Wallets can facilitate the identity creation for new users:
+
+- Users select a username.
+- Users complete a captcha.
+- The wallet issues a registration NFT and sends it to the user's address.
+  - The commitment is the username.
+  - The NFT can solely be used to mint a new Identity NFT with the same commitment.
+  - The NFT input includes sufficient satoshis for an additional transaction.
+- The wallet detects the registration NFT and uses it to establish the user's identity.
+
+Although the user now has an identity, they might still encounter difficulties updating their BCRM data without access to coins. However, they now have a presence in the system.
+
+#### Sponsored by Friend
+
+Many users will be introduced to the system through friends sharing their experiences.
+
+A friend can assist in setting up the wallet and then transfer their NFT Business Card to be included in the new user's contacts.
+
+Subsequently, this NFT becomes expendable and can be used as a registration NFT to craft the new user's identity. It's essential to ensure that the business card NFT carries enough BCH to cover an additional transaction.
+
+Sending a Business Card NFT to a friend offers several advantages over having them scan a QR Code Identity and sending a small BCH amount for identity registration:
+
+- It's simpler and demands fewer steps. New wallets might even auto-accept the initial friend identity, eliminating the approval phase.
+- Gifting a Business Card NFT is free of social expectations, whereas providing a minimal BCH amount can feel awkward (who wants to send only 5 cents?). Including the BCH within the Business Card NFT sidesteps this issue.
+- The new identity might receive an initial weight boost if the business card's identity carries any. Registries can ascertain this weight by examining the identity's creation process (i.e., was an NFT used, and who initiated it?).
+- By identifying users who introduce active newcomers to the system (and whose business card NFTs are frequently utilized), the ecosystem might reward these evangelists. For instance, a wallet or app with active users brought in by an evangelist might send them BCH or other NFTs as a token of appreciation.
