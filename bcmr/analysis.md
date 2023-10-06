@@ -131,7 +131,93 @@ URL/search?commitments[]=1,commitments[]=2,commitments[]=3
 
 Would provide a json array with the 3 commitments, each one having to match the hash from the index.
 
-## Main considerations
+## Considerations
 
 - You dont want to download more datas than required, that slow everything down
 - You also dont want to do one query per piece of datas, you have to be able to select what you need using a DTO.
+
+## Implementation
+
+#### Authchain vs CashTokens
+
+The BCMR specs do not rely on CashTokens to implement identities but on Authchain resolution.
+
+The main difference is that an authchain has only 1 active UTXO to manage the identity, while a token category can be managed by multiples mintable NFTs at the same time.
+
+Having multiple NFTs for a single identity is problematic because all of them can publish a new BCMR payload in the same block, leading to confusion.
+
+The NFT identity should be managed by a covenant to be valid, and should only be able to move to update the BCMR payload or to create non mintable NFTs for business cards.
+Non mintables NFTs of an identity cannot update the identity BCMR payload.
+
+With that setup, we have the benefits of using CT for identities w/o the need to compute the authhead because we can query the utxos of a specific tokenID with a single RPC call.
+
+#### Fetching datas
+
+Clients should not fetch datas directly because the number of requests to make is going to be exponentiel and non practical and mobile devices.
+
+Instead, client should rely on their datas provider to serve results in a way that can be validated localy.
+
+#### Fetching Identities
+
+Each identity registered in the system has a tokenID.
+
+The datas provider will provide:
+
+- The identity username
+- The identity tokenID
+- The UTXO holding the identity NFT (mintable and in a covenant)
+- The BCMR payload
+
+The wallet will:
+
+- Request the full transaction of the UTXO
+- Extract the BCMR headers (hash + URL)
+- Compute and compare the hash of the served payload to the headers hash
+
+The datas provider should enforce a limit on the BCMR payload, protecting client from dowloading huge payloads.
+
+The payload should have the following format:
+
+- Identity
+- Link to indexes payloads
+  - Index of items of type A: URL + hash
+  - Index of items of type B: URL + hash
+  - ...
+
+This format allow client to access the identity with a low payload size, and then request more datas based on their need and the available indexes.
+
+For example, the client could require the index of sub identities.
+
+#### IPFS
+
+Hosting BCMR payload on IPFS might seems like a good solution because the URI also contain the hash of the datas.
+
+In reality that solution is not pratical for the following reasons:
+
+- IPFS is slow
+- It's really hard to compute the hash of the payload without a full IPFS lib
+- The full IPFS lib is 20+ MB which is not pratical on mobile devices
+
+Using a JSON payload with a sha256 hash is a better solution.
+
+The BCMR specs specify that all clients should be able to verify IPFS hashes. It will never be the case.
+
+#### Identity History
+
+The spec specify that an identity is a succession of snapshots with only one valid at a given time. Snapshots are ordered by timestamp with the ability to plan for upcoming changed.
+
+While it make sense to be able to access previous version of an identity, the current implementation is not pratical:
+
+- Who store all the previous datas, that can be large very fast
+- Previous snapshots should not be stored at the same level of the current identity
+  - That wont scale
+  - That should be stored in an index of items
+  - Most clients wont care about that old datas
+
+The upcoming identity change is a nice feature, but it should only have one available slot.
+
+#### Locales
+
+Again, if all locales are stored inside the root of the identity, that wont scale because any client that wants to verify an identity has to download useless datas for all the others locales.
+
+Instead, locales should be stored in a specialised index with a hash per localeID.
