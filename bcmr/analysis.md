@@ -221,3 +221,9 @@ The upcoming identity change is a nice feature, but it should only have one avai
 Again, if all locales are stored inside the root of the identity, that wont scale because any client that wants to verify an identity has to download useless datas for all the others locales.
 
 Instead, locales should be stored in a specialised index with a hash per localeID.
+
+## Identity Datas
+
+BCMR has a loose typing for identity that allow for a lot of flexibility, but also make it hard to grasp and will be a nightmare for UX designers.
+
+While we understand the design choices, we think that adoption of such a standard will be slow and painful. Something a bit more rigid and predictible, that focus on ease of use and scalability would have a better chance of taking off.
