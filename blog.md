@@ -80,3 +80,47 @@ After two productive weeks working with CT, we find it to be a robust and effici
 Join [Telegram](https://t.me/kumalycom) NOW!
 
 Join [Discord](https://discord.gg/ceXWjBQtZe) NOW!
+
+# Week 3 - 2 Oct 2023 - Collectopia Integration Update
+
+## Overview
+
+This week was a blend of challenges and achievements:
+
+- Faced issues with public Fulcrum nodes on chipnet, requiring us to set up our own.
+- Struggled with crafting a seamless docker setup for BCHN and Fulcrum.
+- Encountered a transaction size limit when users purchased multiple packs simultaneously.
+- Had to overhaul our backend scripts to work around mainnet.cash limitations.
+
+On the flip side:
+
+- Drafted the initial set of game rules.
+- Integrated BCH prizes into the leaderboard.
+- Enabled buying and opening of packs/boosters in a single transaction.
+- Added a step to display assets once a booster is opened.
+
+## Progress Report
+
+We've made significant headway, especially in transitioning our code base from EVM to UTXOs. CashTokens promise better scalability as we move forward.
+
+## Limitations and Challenges
+
+### Leaderboard
+
+Querying real-time data for a dynamic leaderboard is tricky. While BCHN's "scantxoutset" endpoint is useful, it does not consider mempool data, causing leaderboard lag. We're working on a workaround, although it's not perfect.
+
+### Mainnet.cash
+
+The library is responsive; issues are usually fixed within hours. Our challenges aren't with the library per se but with its simplified interfaces like `tokenMint()`. While user-friendly, they don't mesh well with our advanced use-cases, necessitating a shift to raw functions and manual UTXO management.
+
+### BCMR Integration
+
+We intended to integrate our metadata with BCMR this week but found that it lacks scalability as asset and app numbers grow. More details on this issue can be found [here](./bcmr/analysis.md).
+
+#### Identity Management
+
+We're also grappling with substituting our EVM-based identity system with one built on CashTokens. Discussions with BCH community members are ongoing.
+
+## Conclusion and Next Steps
+
+Check out our weekly progress via our [Weekly YouTube Video](https://www.youtube.com/watch?v=bMjIYzpM7HY) and consider joining our [Telegram](https://t.me/kumalycom) and [Discord](https://discord.gg/ceXWjBQtZe) to test our current integration.
