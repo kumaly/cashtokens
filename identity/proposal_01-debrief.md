@@ -18,6 +18,10 @@ Having the `alice` username registered in multiple registries and pointing to di
 
 Concerns were raised about building a system where the registry's identity (i.e., their tokenID) is sourced from the DNS configuration of their domain. This is not viewed as a secure setup since domains can be seized or corrupted.
 
+## DNS is OK for Corporate Domains
+
+If a company wants to handle a direct link to its tokenID, then using a DNS lookup on its domain is less problematic. This is because there aren't millions of users depending on that single domain, and the company assumes its own responsibilities.
+
 ## Performance of Registries
 
 There are questions about how the system will scale once registries handle millions of identities without becoming centralized.
