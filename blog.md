@@ -124,3 +124,35 @@ We're also grappling with substituting our EVM-based identity system with one bu
 ## Conclusion and Next Steps
 
 Check out our weekly progress via our [Weekly YouTube Video](https://www.youtube.com/watch?v=bMjIYzpM7HY) and consider joining our [Telegram](https://t.me/kumalycom) and [Discord](https://discord.gg/ceXWjBQtZe) to test our current integration.
+
+# Week 4 - 9 Oct 2023 - Collectopia Integration Update
+
+## Overview
+
+We spent most of the week optimizing performance and improving minor details. The app is now significantly smoother.
+
+## Limitations and Challenges
+
+### Fulcrum limitations
+
+While conducting intensive testing on Chipnet, we opened numerous boosters and minted more than 7,500 NFTs in our test account. With so many UTXOs in a single address, the app's performance deteriorated to the point of being unusable.
+
+One major limitation is that tools like Fulcrum only allow retrieval of the full list of an address's UTXOs without any filtering options. This results in a payload of around 3MB for 7,500 NFTs' UTXOs.
+
+Each time a UTXO is consumed or created, the client must download the full 3MB again, leading to excessive bandwidth consumption and lag.
+
+### Attack vector
+
+Before the introduction of Cash Tokens, if someone spammed you with 7,500 BCH UTXOs, you could easily combine them into a single UTXO. With Cash Tokens, this is not possible because you first have to decide which tokens to keep and which to burn.
+
+This creates an attack vector where a rogue actor could spam users with tens of thousands of cheap NFTs, locking their wallets in a state where they are unable to sync due to the oversized UTXO payload.
+
+### Dealing with the problem
+
+To address this issue within our app, we created a command to remove all unrelated tokens. However, even with this solution, some users with low-end mobile devices struggled to reduce their large UTXO counts and return the app to a functional state.
+
+We suspect that this will be an ongoing issue for BCH apps until tooling improves to allow better UTXO filtering on the indexer side.
+
+## Conclusion and Next Steps
+
+Consider joining our [Telegram](https://t.me/kumalycom) and [Discord](https://discord.gg/ceXWjBQtZe) to test our current integration.
